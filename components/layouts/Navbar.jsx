@@ -1,0 +1,77 @@
+'use client';
+
+import Link from 'next/link';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import clsx from 'clsx';
+import { ModeToggle } from '../modeToggler';
+
+export default function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <nav
+      className={clsx(
+        'fixed top-0 left-0 w-full z-50 backdrop-blur-md transition-colors duration-300',
+        'bg-neutral-50/70 dark:bg-neutral-950/70'
+      )}
+    >
+      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-bold">
+          <span className="text-neutral-950 dark:text-neutral-50">Tone</span>
+          <span className=" decoration-2 decoration-gradient-to-r bg-gradient-to-r from-blue-600 to-orange-500 text-transparent bg-clip-text">
+            RD
+          </span>
+        </Link>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <Link
+            href="/"
+            className="text-neutral-800 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Home
+          </Link>
+          <Link
+            href="/dashboard/installation"
+            className="text-neutral-800 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Docs
+          </Link>
+          <ModeToggle />
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-neutral-800 dark:text-neutral-200"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Nav Links */}
+      {mobileOpen && (
+        <div className="md:hidden bg-neutral-50/80 dark:bg-neutral-950/80 backdrop-blur-md px-4 py-3 space-y-2 text-sm font-medium">
+          <Link
+            href="/"
+            className="block text-neutral-800 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+            onClick={() => setMobileOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            href="/dashboard/installation"
+            className="block text-neutral-800 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+            onClick={() => setMobileOpen(false)}
+          >
+            Docs
+          </Link>
+          <ModeToggle />
+        </div>
+      )}
+    </nav>
+  );
+}

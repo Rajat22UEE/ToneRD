@@ -1,16 +1,23 @@
+'use client';
+
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+import HeroSection from '../components/HeroSection';
+
 export default function Home() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-out-cubic',
+      
+    });
+  }, []);
+
   return (
-    <>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-900">
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-        <p className="text-lg">Welcome to the Tonerd app!</p>
-        <p className="text-sm text-gray-500">
-          This is a simple example of a Next.js page using Tailwind CSS.
-        </p>
-        <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-          Click Me
-        </button>
-      </div>
-    </>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-50 dark:bg-neutral-950 transition-colors">
+      <HeroSection />
+    </div>
   );
 }
