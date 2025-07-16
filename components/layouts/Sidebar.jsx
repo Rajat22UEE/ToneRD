@@ -13,7 +13,7 @@ const sections = [
     links: [
       { label: 'Button', href: '/dashboard/Button' },
       { label: 'Animation', href: '/dashboard/Animation' },
-      { label: 'Effects', href: '/dashboard/Effects' },
+      
     ],
   },
 ];
@@ -22,11 +22,11 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="sticky top-24 w-full max-w-[220px] text-sm">
-      <nav className="space-y-6 border-l border-dotted border-neutral-300 dark:border-neutral-700 pl-4">
+    <aside className="hidden md:block sticky top-24 w-full max-w-[220px]">
+      <nav className="space-y-6 w-64 h-[84vh] border border-dotted border-neutral-300 dark:border-neutral-700 rounded-lg p-4 bg-white dark:bg-neutral-950 shadow-sm">
         {sections.map((section) => (
           <div key={section.title} className="space-y-2">
-            <h4 className="font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wide">
+            <h4 className="font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wide text-sm">
               {section.title}
             </h4>
             <div className="space-y-1">
