@@ -17,7 +17,7 @@ const animationVariants = [
 const buttonVariants = ['default', 'secondary', 'destructive', 'outline', 'link'];
 
 export default function AnimationPage() {
-  const [selectedAnimation, setSelectedAnimation] = useState('hoverGlow');
+  const [selectedAnimation, setSelectedAnimation] = useState('none');
   const [activeTab, setActiveTab] = useState('preview');
   const [copied, setCopied] = useState(false);
 
